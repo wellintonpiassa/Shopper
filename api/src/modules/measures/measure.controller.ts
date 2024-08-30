@@ -29,6 +29,7 @@ export class MeasureController {
         .status(HttpStatus.OK)
         .send(await this.measureService.upload(measureUpload));
     } catch (error) {
+      console.log(error);
       return res.status(HttpStatus.BAD_REQUEST).send(error);
     }
   }

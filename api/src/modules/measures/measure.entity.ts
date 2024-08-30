@@ -20,10 +20,16 @@ export class Measure {
   measureDatetime: Date;
 
   @Prop()
-  type: measureTypes;
+  measureValue: number;
+
+  @Prop()
+  measureType: measureTypes;
 
   @Prop()
   confirmedValue: boolean;
+
+  @Prop()
+  imageLink: string;
 }
 
 export const MeasureSchema = SchemaFactory.createForClass(Measure);
