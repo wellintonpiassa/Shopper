@@ -7,7 +7,7 @@ import {
   IsString,
 } from 'class-validator';
 
-enum measureTypes {
+export enum measureTypes {
   WATER = 'water',
   GAS = 'gas',
 }
@@ -16,26 +16,30 @@ export class MeasureUploadDto {
   @Expose()
   @IsBase64()
   @IsNotEmpty()
-  image: string;
+  readonly image: string;
 
   @Expose({ name: 'customer_code' })
   @IsString()
   @IsNotEmpty()
-  customerCode: string;
+  readonly customerCode: string;
 
   @Expose({ name: 'measure_datetime' })
   @IsISO8601()
-  @IsNotEmpty()
-  measureDatetime: Date;
+  readonly measureDatetime: Date;
 
   @Expose({ name: 'measure_type' })
   @IsEnum(measureTypes)
   @IsNotEmpty()
-  type: measureTypes;
+  readonly measureType: measureTypes;
 }
 
 export class MeasureUploadResponseDto {
-  image_url: string;
-  measure_value: number;
-  measure_uuid: string;
+  @Expose({ name: 'image_link' })
+  imageLink: string;
+
+  @Expose({ name: 'measure_value' })
+  measureValue: number;
+
+  @Expose({ name: 'measure_uuid' })
+  measureUUID: string;
 }

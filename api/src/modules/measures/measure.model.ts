@@ -1,14 +1,10 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-
-enum measureTypes {
-  WATER = 'water',
-  GAS = 'gas',
-}
+import { IsBoolean, IsOptional } from 'class-validator';
 
 @Schema()
 export class Measure {
   @Prop()
-  UUID: string;
+  measureUUID: string;
 
   @Prop()
   image: string;
@@ -17,16 +13,22 @@ export class Measure {
   customerCode: string;
 
   @Prop()
+  @IsOptional()
   measureDatetime: Date;
 
   @Prop()
   measureValue: number;
 
   @Prop()
-  measureType: measureTypes;
+  measureType: string;
 
   @Prop()
-  confirmedValue: boolean;
+  @IsOptional()
+  confirmedValue: number;
+
+  @Prop()
+  @IsBoolean()
+  hasConfirmed: boolean;
 
   @Prop()
   imageLink: string;

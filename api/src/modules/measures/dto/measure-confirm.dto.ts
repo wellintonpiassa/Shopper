@@ -1,14 +1,14 @@
 import { Expose } from 'class-transformer';
-import { IsBoolean, IsUUID } from 'class-validator';
+import { IsBoolean, IsString } from 'class-validator';
 
 export class MeasureConfirmDto {
   @Expose({ name: 'measure_uuid' })
-  @IsUUID()
+  @IsString()
   measureUUID: string;
 
   @Expose({ name: 'confirmed_value' })
   @IsBoolean()
-  confirmedValue: boolean;
+  confirmedValue: number;
 }
 
 export class MeasureConfirmResponseDto {
